@@ -1,27 +1,50 @@
-import React from 'react'
-import GroupIcon from '@mui/icons-material/Group';
-import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+'use client';
+import React from "react";
+import GroupIcon from "@mui/icons-material/Group";
+import SearchIcon from "@mui/icons-material/Search";
+import AddIcon from "@mui/icons-material/Add";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
-const Navbar = () => {
+const Navbar = ({ searchUser, setSearchUser }) => {
+  
+  const handleChange = (e) => {
+    setSearchUser(e.target.value);
+  };
+
   return (
-    <div className='bg-gray-900 px-5 py-2  flex justify-between items-center'>
-        Chat App
+    <div className="bg-gray-900 px-5 py-2 flex justify-between items-center">
+      <span className="text-white">Chat App</span>
 
+      {/* Search Bar */}
+      <div className="bg-red-900 rounded-full w-1/3">
+        <input
+          onChange={handleChange}
+          className="rounded-full py-2 px-3 text-black w-full"
+          placeholder="Search..."
+        />
+      </div>
 
-    {/* button */}
-    <div className=' flex items-center   gap-16 justify-between ' >
-     <div className='flex gap-5 '>
-     <button className=''><SearchIcon/></button>
-     <button className=''><AddIcon/></button>
-     <button className=''><GroupIcon/></button>
-     <button className=''><NotificationsIcon/></button>
-     </div>
-     <button className='bg-gray-500 px-5 py-2 rounded-lg self-center'>LogIn</button>
+      {/* Button Group */}
+      <div className="flex items-center gap-5">
+        <button className="">
+          <SearchIcon />
+        </button>
+        <button className="">
+          <AddIcon />
+        </button>
+        <button className="">
+          <GroupIcon />
+        </button>
+        <button className="">
+          <NotificationsIcon />
+        </button>
+        
+        <button className="bg-gray-500 px-5 py-2 rounded-lg self-center">
+          LogIn
+        </button>
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
