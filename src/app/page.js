@@ -1,19 +1,24 @@
-'use client'
+"use client";
+import Chat from "@/components/Chat";
 import Navbar from "@/components/Navbar";
 import UserProfileBar from "@/components/UserProfileBar";
 import UserSiderBar from "@/components/UserSiderBar";
 import React, { useState } from "react";
 
 const Home = () => {
-  const [searchuser,setSearchUser]=useState('')
+  const [searchuser, setSearchUser] = useState("");
   return (
-    <div className="h-svh  overflow-auto">
-      <Navbar setSearchUser={setSearchUser} searchuser={searchuser} />
+    <div className=" h-dvh overflow-auto ">
+      <div className="sticky top-0">
+        <Navbar setSearchUser={setSearchUser} searchuser={searchuser} />
+      </div>
 
       <div className="bar flex  justify-between ">
         <UserSiderBar setSearchUser={setSearchUser} searchuser={searchuser} />
 
-        <UserProfileBar/>
+        <Chat />
+
+        <UserProfileBar />
       </div>
     </div>
   );
