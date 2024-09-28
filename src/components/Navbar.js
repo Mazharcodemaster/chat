@@ -8,6 +8,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 const Navbar = ({ searchUser, setSearchUser }) => {
   
   const handleChange = (e) => {
+    
     setSearchUser(e.target.value);
   };
 
@@ -26,9 +27,6 @@ const Navbar = ({ searchUser, setSearchUser }) => {
 
       {/* Button Group */}
       <div className="flex items-center gap-5">
-        <button className="">
-          <SearchIcon />
-        </button>
         <button className="">
           <AddIcon />
         </button>
