@@ -1,12 +1,13 @@
 'use client';
-import React from "react";
+import React, { useState } from "react";
 import GroupIcon from "@mui/icons-material/Group";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import AddUser from "./model/AddUser";
 
 const Navbar = ({ searchUser, setSearchUser }) => {
-  
+  const [add,setAdd]=useState(false)
   const handleChange = (e) => {
     
     setSearchUser(e.target.value);
@@ -41,6 +42,9 @@ const Navbar = ({ searchUser, setSearchUser }) => {
           LogIn
         </button>
       </div>
+   {
+    add && <AddUser />
+   }
     </div>
   );
 };
