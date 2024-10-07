@@ -5,7 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 
-const Navbar = ({ searchUser, setSearchUser }) => {
+const Navbar = () => {
   
   const handleChange = (e) => {
     setSearchUser(e.target.value);
@@ -26,7 +26,7 @@ const Navbar = ({ searchUser, setSearchUser }) => {
 
       {/* Button Group */}
       <div className="flex items-center gap-5">
-        <button className="" onClick={() => setNewUser(true)}>
+        <button className="" >
           <AddIcon style={{ color: "white" }} />
         </button>
         <button className="">
