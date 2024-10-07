@@ -1,13 +1,12 @@
-"use client";
-import React, { useState } from "react";
+'use client';
+import React from "react";
 import GroupIcon from "@mui/icons-material/Group";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import SimpleDialogDemo from "./AddNewUserMenu";
 
 const Navbar = ({ searchUser, setSearchUser }) => {
-  const [newUser, setNewUser] = useState(false);
+  
   const handleChange = (e) => {
     setSearchUser(e.target.value);
   };
@@ -40,12 +39,6 @@ const Navbar = ({ searchUser, setSearchUser }) => {
         <button className="bg-gray-500 px-5 py-2 rounded-lg self-center">
           LogIn
         </button>
-      </div>
-
-      <div className="absolute">
-        {newUser && (
-          <SimpleDialogDemo newUser={newUser} setNewUser={setNewUser} />
-        )}
       </div>
     </div>
   );
