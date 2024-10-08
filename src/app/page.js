@@ -8,7 +8,7 @@ import React, { useState } from "react";
 const Home = () => {
   const [searchuser, setSearchUser] = useState("");
   return (
-    <div className=" h-dvh overflow-auto ">
+    <div className=" h-[100vh] overflow-auto ">
       <div className="sticky top-0">
         <Navbar setSearchUser={setSearchUser} searchuser={searchuser} />
       </div>
