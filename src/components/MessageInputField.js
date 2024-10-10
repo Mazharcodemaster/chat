@@ -16,6 +16,8 @@ const MessageInputField = () => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
+      console.log(selectedFile);
+      
     const fileFormate=  selectedFile.type.split('/')
     setFileFor(fileFormate)
     
