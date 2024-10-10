@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import SendIcon from "@mui/icons-material/Send";
+import RenderAttch from "./RenderAttch";
 
 const MessageInputField = () => {
   const inputRef = useRef(null);
@@ -16,10 +17,15 @@ const MessageInputField = () => {
     const selectedFile = e.target.files[0];
     if (selectedFile) {
       setFile(selectedFile);
-      console.log(selectedFile);
+      console.log(selectedFile)
+    
       
-    const fileFormate=  selectedFile.type.split('/')
-    setFileFor(fileFormate)
+    let fileFormate=  selectedFile.type.split('/').pop()
+    console.log(fileFormate);
+    
+     let attachment= RenderAttch(fileFormate)
+    console.log(attachment);
+    
     
     }
   };

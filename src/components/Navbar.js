@@ -1,12 +1,13 @@
 'use client';
-import React from "react";
+import React, { useState } from "react";
 import GroupIcon from "@mui/icons-material/Group";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import GroupUser from "./model/CreateGroup";
 
 const Navbar = () => {
-  
+  const [createGroup,setCreateGroup]=useState(false)
   const handleChange = (e) => {
     setSearchUser(e.target.value);
   };
@@ -29,7 +30,7 @@ const Navbar = () => {
         <button className="" >
           <AddIcon style={{ color: "white" }} />
         </button>
-        <button className="">
+        <button onClick={()=>setCreateGroup(true)} className="">
           <GroupIcon style={{ color: "white" }} />
         </button>
         <button className="">
@@ -40,6 +41,9 @@ const Navbar = () => {
           LogIn
         </button>
       </div>
+      {
+        createGroup && <GroupUser createGroup={createGroup} setCreateGroup={setCreateGroup}  />
+      }
     </div>
   );
 };
