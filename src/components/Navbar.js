@@ -5,9 +5,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import GroupUser from "./model/CreateGroup";
+import GroupName from "./model/GroupName";
 
 const Navbar = () => {
   const [createGroup,setCreateGroup]=useState(false)
+  const [confirm,setConfirm]=useState(false)
   const handleChange = (e) => {
     setSearchUser(e.target.value);
   };
@@ -42,8 +44,9 @@ const Navbar = () => {
         </button>
       </div>
       {
-        createGroup && <GroupUser createGroup={createGroup} setCreateGroup={setCreateGroup}  />
+        createGroup && <GroupUser setConfirm={setConfirm} createGroup={createGroup} setCreateGroup={setCreateGroup}  />
       }
+      <GroupName confirm={confirm} setConfirm={setConfirm}/>
     </div>
   );
 };
