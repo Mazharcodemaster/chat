@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-gray-900 px-5 py-2 flex justify-between items-center">
-      <span className="text-white">Chat App</span>
+      <span className="text-white">My Chat App</span>
 
       {/* Search Bar */}
       <div className="bg-red-900 rounded-full w-1/3">
