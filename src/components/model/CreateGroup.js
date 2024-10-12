@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
   Dialog,
   List,
@@ -12,13 +12,12 @@ import {
   Checkbox,
   TextField,
   InputAdornment,
-  Alert,
+  Button,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
-import { blue } from "@mui/material/colors";
 
-const GroupUser = ({ createGroup, setCreateGroup }) => {
+const GroupUser = ({ createGroup, setCreateGroup,setConfirm }) => {
   const userArray = [
     { userName: "azhar", imageUrl: "/mazhar.jpg" },
     { userName: "mazhar", imageUrl: "/mazhar.jpg" },
@@ -33,20 +32,21 @@ const GroupUser = ({ createGroup, setCreateGroup }) => {
     setCreateGroup(false);
   };
 
-  // Handles selecting/deselecting users
-  const handleListItemClick = (userName) => {
+  const handleListItemClick = useCallback(
+    (userName) => {
+      if (selectedUsers.includes(userName)) {
+        setSelectedUsers((prevUsers) =>
+          prevUsers.filter((user) => user !== userName)
+        );
+      } else {
+        setSelectedUsers((prevUsers) => [...prevUsers, userName]);
+      }
+    },
+    [selectedUsers]
+  );
 
-    
-    setSelectedUsers((prevSelected) =>
-      prevSelected.includes(userName)
-        ? prevSelected.filter((name) => name !== userName)
-        : [...prevSelected, userName]
-    );
-    console.log(selectedUsers);
-    
-  };
+  console.log(selectedUsers);
 
-  // Filters users based on search term
   const filteredUsers = userArray.filter((user) =>
     user.userName.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -76,23 +76,39 @@ const GroupUser = ({ createGroup, setCreateGroup }) => {
         <List sx={{ pt: 0 }}>
           {filteredUsers.map((user, index) => (
             <ListItem key={index} disableGutters>
-              <ListItemButton onClick={() => handleListItemClick(user.userName)}>
+              <ListItemButton
+                onClick={() => handleListItemClick(user.userName)}
+              >
                 <ListItemAvatar>
                   <Avatar src={user.imageUrl} alt={user.userName}>
                     {!user.imageUrl && <PersonIcon />}
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={user.userName} />
-                
+
                 {/* Checkbox - reflects if user is selected */}
-            <input type="checkbox" onClick={()=>handleListItemClick(user.userName)}/>
+                <Checkbox
+                  edge="end"
+                  checked={selectedUsers.includes(user.userName)}
+                  onChange={() => handleListItemClick(user.userName)}
+                />
               </ListItemButton>
             </ListItem>
           ))}
-
         </List>
 
-        
+        {/* Centered Button */}
+        <Stack direction="row" justifyContent="center">
+          <Button
+            variant="contained"
+            style={{
+              width: "200px",
+            }}
+            onClick={()=>setConfirm(true)}
+          >
+            Next
+          </Button>
+        </Stack>
       </Stack>
     </Dialog>
   );
