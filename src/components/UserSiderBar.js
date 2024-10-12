@@ -54,46 +54,7 @@ const UserSiderBar = ({searchuser,setSearchUser}) => {
       userName: "ali",
       imageUrl: "/mazhar.jpg",
     },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
-    {
-      userName: "ali",
-      imageUrl: "/mazhar.jpg",
-    },
+    
   ];
   const [filterUser,setFilterUser]=useState(userArray)
 

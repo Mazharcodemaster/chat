@@ -14,7 +14,7 @@ const Home = () => {
       </div>
 
       <div className="bar flex  justify-between ">
-        <UserSiderBar  />
+        <UserSiderBar searchuser={searchuser} />
 
         <Chat />
 

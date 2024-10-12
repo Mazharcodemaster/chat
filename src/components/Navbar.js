@@ -6,11 +6,14 @@ import AddIcon from "@mui/icons-material/Add";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import GroupUser from "./model/CreateGroup";
 import GroupName from "./model/GroupName";
+import AddUser from "./model/AddUser";
 
-const Navbar = () => {
+const Navbar = ({setSearchUser}) => {
   const [createGroup,setCreateGroup]=useState(false)
+  const [addUser,setAddUser]=useState(false)
   const [confirm,setConfirm]=useState(false)
   const handleChange = (e) => {
+    
     setSearchUser(e.target.value);
   };
 
@@ -29,7 +32,7 @@ const Navbar = () => {
 
       {/* Button Group */}
       <div className="flex items-center gap-5">
-        <button className="" >
+        <button onClick={()=>setAddUser(true)} className="" >
           <AddIcon style={{ color: "white" }} />
         </button>
         <button onClick={()=>setCreateGroup(true)} className="">
@@ -43,9 +46,9 @@ const Navbar = () => {
           LogIn
         </button>
       </div>
-      {
-        createGroup && <GroupUser setConfirm={setConfirm} createGroup={createGroup} setCreateGroup={setCreateGroup}  />
-      }
+      <AddUser addUser={addUser} setAddUser={setAddUser}/>
+      <GroupUser setConfirm={setConfirm} createGroup={createGroup} setCreateGroup={setCreateGroup}  />
+      
       <GroupName confirm={confirm} setConfirm={setConfirm}/>
     </div>
   );
