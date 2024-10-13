@@ -1,52 +1,14 @@
-name: Build and Deploy
-
-on:
-  push:
-    branches:
-      - master
-
-
-
+name: Build Next.js
+on: [push]
 jobs:
-  build:
+  build_next:
     runs-on: ubuntu-latest
-
+    name: Build Next.js
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
+    - uses: actions/checkout@v3
+    - id: Build-Next
+      uses: ricardobiundo/NextPagesAction@1.0.2
       with:
-        node-version: '20.16.0'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build the project
-      run: npm run build
-
-    - name: Upload production-ready files
-      uses: actions/upload-artifact@v4
-      with:
-        name: production-files
-        path: ./build
-
-  deploy:
-    name: Deploy Project
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-      
-        path: ./build
-
-    - name: Deploy to GitHub Pages
-      uses: bitovi/github-actions-react-to-github-pages@v1.2.4
-      with:
-        github_token: ${{ secrets.TOKEN }}
-        publish_dir: ./build
+        username: 'Mazharcodemaster'
+        reponame: 'chat'
+        token: ${{ secrets.TOKEN }} # Leave this line unchanged
