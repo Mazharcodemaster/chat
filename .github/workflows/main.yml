@@ -24,16 +24,6 @@ jobs:
     - name: Build the project
       run: npm run build
 
-    # List contents of the .next directory to ensure files exist
-    - name: List build directory contents
-      run: ls -la ./.next
-
-    - name: Upload production-ready files
-      uses: actions/upload-artifact@v4
-      with:
-        name: production-files
-        path: ./.next
-
   deploy:
     name: Deploy Project
     needs: build
@@ -43,23 +33,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3  # Again, use the latest version
 
-    - name: Download artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: production-files
-        path: ./.next
-
-    - name: Set up Node.js  # Add Node.js setup in the deploy job as well
+    - name: Set up Node.js  # Set up Node.js in the deploy job as well
       uses: actions/setup-node@v3
       with:
         node-version: '20.16.0'
-
-    # List downloaded directory to confirm the artifact has been correctly downloaded
-    - name: List downloaded directory contents
-      run: ls -la ./.next
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.TOKEN }}
-        publish_dir: ./.next
+        publish_dir: .next  # Specify the directory where built files reside
