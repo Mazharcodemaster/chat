@@ -24,8 +24,7 @@ jobs:
     - name: Build the project
       run: npm run build
 
-    - name: Export static site
-      run: npm run export  # Export static files to the out directory
+     # Export static files to the out directory
 
   deploy:
     name: Deploy Project
